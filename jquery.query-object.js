@@ -88,8 +88,9 @@ new function(settings) {
           if ($spaces) q = q.replace(/[+]/g,' '); // replace +'s with spaces
           
           jQuery.each(q.split(/[&;]/), function(){
-            var key = decodeURIComponent(this.split('=')[0] || "");
-            var val = decodeURIComponent(this.split('=')[1] || "");
+            var tmp = this.split('=');
+            var key = decodeURIComponent(tmp.shift() || "");
+            var val = decodeURIComponent(tmp.join('=') || "");
             
             if (!key) return;
             
